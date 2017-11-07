@@ -6,8 +6,11 @@ socket.on('connect', function(data){
 
 var textToShow = ['Build your happy place.', 'How does your first memory feel?', 'Describe your next travel destination, real or imagined.', 'What has your day looked like so far?', 'What does home look like?', 'How does your regular commute feel?', 'Describe what sounds you’re hearing right now.']
     $(document).ready(function() {
-        $(".prompt_projection").html(textToShow[Math.floor(Math.random()*textToShow.length)]);
+        var promptWeGot = textToShow[Math.floor(Math.random()*textToShow.length)]
+
+        $(".prompt_projection").html(promptWeGot);
         console.log(textToShow);
+        
       });
 
     $(document).ready(function() {
@@ -32,13 +35,17 @@ var textToShow = ['Build your happy place.', 'How does your first memory feel?',
 socket.on('projectionRouteSurveyAnswers',function(surveyAnswers){
   console.log("projectionRouteSurveyAnswers:", surveyAnswers);
 
-  var rt = Math.random()*600;
-  var rl = Math.random()*600;
+  // console.log();
 
-//generate a new image jQuery object and append to the body. (at a random spot)
+var sizes = [50,100,150]
+
+  var randSize = sizes[  Math.floor(Math.random()*sizes.length)  ] //get a random index from the sizes array and store it in the randSize variable
+  var rt = randomRange($('.topSection').height() , window.innerHeight - randSize); // get a random number between the height of the top section and the height of the screen minus the height of the randSize (the image)
+  var rl = randomRange(0,window.innerWidth - randSize) // get a random number between 0 and the width of the screen minus the height of the randSize (the image) (assuming that everything is square)
+
+//generate a new image jQuery object and append to the body. (at a random spot, with a size from the sizes array using injected CSS)
   $('<img src="compiledImages/'+ surveyAnswers.blackfillshape+'_'+surveyAnswers.color+'_'+surveyAnswers.fillpattern+'.png" >')
-  .css({"position":"absolute","top":rt,"left":rl}).appendTo('body')
-
+  .css({"position":"absolute","top":rt,"left":rl,"height":randSize+"px"}).appendTo('body')
 
 })
 
@@ -51,3 +58,9 @@ socket.on('setInterval',function(timer){
 
 
 })
+
+
+
+function randomRange(min, max) {
+    return Math.random() * (max - min) + min;
+}

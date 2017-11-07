@@ -121,6 +121,8 @@ $('.done').click(function(){
     console.log("we have all 3, good to go");
     socket.emit('sendSurveyAnswers', surveyAnswers) //send the info up to the server.
 
+    location.reload(); //reload the page.
+
   }else{ //if we dont the values, throw some sort of error. //maybe you setup defaults instead?
     console.log("missing some selections....");
     //deal with an error message to the user somehow?
