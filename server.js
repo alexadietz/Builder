@@ -10,7 +10,6 @@ app.use(express.static('public'))
 io.on('connection', function(socket){
   console.log(socket.id); // log out the unique ID of each person who connects
 
-
   ///hang out and wait for a message from ANY clinet.
   socket.on('sendSurveyAnswers',function(surveyAnswers){
     //we got one, re route it to the projection.
@@ -21,6 +20,11 @@ io.on('connection', function(socket){
 
 
 //makes the app listen for requests on port 3000
-server.listen(3000, function(){
-  console.log("app listening on port 3000!")
+// server.listen(3000, function(){
+//   console.log("app listening on port 3000!")
+// })
+
+var port = process.env.PORT || 3000;
+server.listen(port, function(){
+  console.log("app listening on port: " + port)
 })
