@@ -5,7 +5,7 @@ socket.on('connect', function(data){
 })
 
 var surveyAnswers = {
-  blackfillshape:'triangle', //set this to NULL if you want to use an error message instead of a default.
+  blackfillshape:NULL, //set this to NULL if you want to use an error message instead of a default.
   color:'red',
   fillpattern:'solid'
 } //empty json object to store our answers before sending to the server.
