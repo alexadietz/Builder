@@ -36,6 +36,9 @@ var textToShow = ['Build your happy place.', 'How does your first memory feel?',
           promptWeGot = textToShow[random] //grab the prompt
           $(".prompt_projection").html(promptWeGot); // render it to the screen.
 
+          //here we also need to reset the view....
+          $('.icons').html(' ') //clear out the html, by filling it with nothing...
+
 
         }
 
@@ -68,7 +71,7 @@ socket.on('projectionRouteSurveyAnswers',function(surveyAnswers){
 
   // console.log();
 
-var sizes = [50,100,150]
+var sizes = [100,175,350]
 
   var randSize = sizes[  Math.floor(Math.random()*sizes.length)  ] //get a random index from the sizes array and store it in the randSize variable
   var rt = randomRange($('.topSection').height() , window.innerHeight - randSize); // get a random number between the height of the top section and the height of the screen minus the height of the randSize (the image)
@@ -76,7 +79,7 @@ var sizes = [50,100,150]
 
 //generate a new image jQuery object and append to the body. (at a random spot, with a size from the sizes array using injected CSS)
   $('<img src="compiledImages/'+ surveyAnswers.blackfillshape+'_'+surveyAnswers.color+'_'+surveyAnswers.fillpattern+'.png" >')
-  .css({"position":"absolute","top":rt,"left":rl,"height":randSize+"px"}).appendTo('body')
+  .css({"position":"absolute","top":rt,"left":rl,"height":randSize+"px"}).appendTo('.icons')
 
 })
 

@@ -14,10 +14,12 @@ body {
   max-width: 375px;
 }
 
+
 @font-face {
   font-family: reglobold;
   src: url(Reglo-Bold.otf);
   font-family: 'Work Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* .prompt {
@@ -189,7 +191,7 @@ body {
   padding-bottom: 3vh;
   color: #21409a;
   text-align: center;
-  
+
 }
 
 .timer {
@@ -206,6 +208,21 @@ body {
 
 #countdown {
   font-family: 'Work Sans', sans-serif;
+}
+
+.logon {
+  position: fixed;
+  font-family: 'Work Sans', sans-serif;
+  background-color: #21409a;
+  text-align: center;
+  color: white;
+  font-size: 2vw;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  top: 95%;
+  width: 100%;
+  height: 5%;
 }
 
 
